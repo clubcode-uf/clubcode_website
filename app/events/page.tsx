@@ -1,18 +1,21 @@
-//This is the events page where we store cards of upcoming and past events.
-//Will use the sanity studio to manage. ("localhost:3000/studio")
+import { getEvents } from "../../sanity/lib/queries";
 import Navbar from "../../components/Navbar";
 
-const page = () => {
+export default async function EventsPage() {
+  const events = await getEvents();
+
   return (
     <div>
       <Navbar/>
-      <div className="min-h-screen flex justify-center items-center -mt-60">
-        <div className="text-6xl">
-          Upcoming Events
+      <h1>Upcoming Events</h1>
+      {events.map((event: any) => (
+        <div key={event._id}>
+          <h2>{event.title}</h2>
+          <p>{event.location}</p>
+          <p>{event.startDateTime}</p>
+          <p>{event.summary}</p>
         </div>
-      </div>
+      ))}
     </div>
-  )
+  );
 }
-
-export default page
