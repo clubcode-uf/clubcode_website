@@ -11,7 +11,16 @@ const Navbar = () => {
     <div className="flex justify-between p-4 ">
       <div>Navbar goes here</div>
       <button onClick={onClick} className="btn btn-primary">
+        Go to Home
+      </button>
+      <button onClick={onClick} className="btn btn-primary">
         Go to About
+      </button>
+      <button onClick={onClick} className="btn btn-primary">
+        Go to Team
+      </button>
+      <button onClick={onClick} className="btn btn-primary">
+        Go to Events
       </button>
     </div>
   );
