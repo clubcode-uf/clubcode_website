@@ -281,17 +281,26 @@ const Waves = ({
       }
     }
 
+    function onPageShow(e) {
+      if (e.persisted) {
+        cancelAnimationFrame(frameIdRef.current);
+        frameIdRef.current = requestAnimationFrame(tick);
+      }
+    }
+
     setSize();
     setLines();
     frameIdRef.current = requestAnimationFrame(tick);
     window.addEventListener('resize', onResize);
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('pageshow', onPageShow);
 
     return () => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('pageshow', onPageShow);
       cancelAnimationFrame(frameIdRef.current);
     };
   }, []);
