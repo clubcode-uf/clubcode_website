@@ -13,8 +13,9 @@ const Navbar = () => {
       <button onClick={onClick} className="btn btn-primary">
         Go to Home
       </button>
-      <button onClick={onClick} className="btn btn-primary">
-        Go to About
+      <div className="font-mono">Navbar goes here</div>
+      <button onClick={onClick} className="btn btn-primary font-mono">
+        About
       </button>
       <button onClick={onClick} className="btn btn-primary">
         Go to Team

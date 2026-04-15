@@ -27,7 +27,24 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header className="w-full bg-white/60 backdrop-blur dark:bg-black/60 border-b border-gray-100 dark:border-zinc-800">
+          <div className="mx-auto max-w-5xl px-6 py-3 flex items-center justify-between">
+            <a href="/" className="text-lg font-semibold">
+              Club CODE
+            </a>
+            <nav className="flex items-center gap-4">
+              <a href="/" className="text-sm text-zinc-700 dark:text-zinc-300">
+                Home
+              </a>
+              <a href="/teams" className="text-sm text-zinc-700 dark:text-zinc-300">
+                Teams
+              </a>
+            </nav>
+          </div>
+        </header>
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }
