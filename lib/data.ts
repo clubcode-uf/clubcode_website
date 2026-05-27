@@ -18,9 +18,9 @@ export const execs: Exec[] = [
   { id: "e2", name: "Madison Howland", role: "Vice President", image: "/images/madison.jpg" },
   { id: "e3", name: "Jahnavi Kompella", role: "Treasurer", image: "/images/jahnavi.jpg" },
   { id: "e4", name:"Weedchenska Jeanbaptiste", role: "Secretary", image: "/images/weedchenska.jpg" },
-  {id: "e5", name: "Remi Klein", role: "Outrach Coordinator", image: "/images/remi.jpg" },
-  {id: "e6", name: "Robert Howland", role: "Fundraing Coordinator", image: "/images/robert.jpg" },
-  {id: "e7", name: "Grecia Perazzo", role: "Digital Communications Coordinator", image: "/images/grecia.jpg" },
+  {id: "e5", name: "Remi Klein", role: "Outreach Coordinator", image: "/images/remi.jpg" },
+  {id: "e6", name: "Robert Howland", role: "Fundraising Coordinator", image: "/images/robert.jpg" },
+  {id: "e7", name: "Grecia Perazzo", role: "Digital Coms Coordinator", image: "/images/grecia.jpg" },
   { id: "e8", name: "Elise Ralph", role: "Social Media Coordinator", image: "/images/elise.jpg" },
 
 ];
@@ -30,7 +30,7 @@ export const teams: Team[] = [
     id: "t1",
     name: "Web Development",
     leads: ["William Chi"],
-    members: ["m1", "m2", "m3"],
+    members: ["Gayathri Gunda", "Remi Klein", "Jahnavi Kompella"],
   },
   {
     id: "t2",
