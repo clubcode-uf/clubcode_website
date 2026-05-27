@@ -9,9 +9,9 @@ const Navbar = () => {
   }
   return (
     <div className="flex justify-between p-4 ">
-      <div>Navbar goes here</div>
-      <button onClick={onClick} className="btn btn-primary">
-        Go to About
+      <div className="font-mono">Navbar goes here</div>
+      <button onClick={onClick} className="btn btn-primary font-mono">
+        About
       </button>
     </div>
   );
