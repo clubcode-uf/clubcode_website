@@ -1,6 +1,6 @@
 import { getEvents } from "../../sanity/lib/queries";
 import Navbar from "../../components/Navbar";
-import WavesBg from "../../components/ui/WavesBg";
+import DottedSurface from "../../components/DottedSurface/DottedSurface";
 
 export default async function EventsPage() {
   const events = await getEvents();
@@ -17,7 +17,9 @@ export default async function EventsPage() {
 
   return (
     <>
-      <WavesBg />
+      <div className="fixed inset-0 -z-10">
+        <DottedSurface />
+      </div>
       <Navbar />
       <main className="min-h-screen flex justify-center px-6 py-12">
         <div className="w-full max-w-4xl space-y-6">
