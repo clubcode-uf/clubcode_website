@@ -1,18 +1,29 @@
-"use client";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Navbar = () => {
-  const router = useRouter();
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/events", label: "Events" },
+    { href: "/teams", label: "Teams" },
+    { href: "/about", label: "About" },
+  ];
 
-  function onClick() {
-    router.push("/about");
-  }
   return (
-    <div className="flex justify-between p-4 ">
-      <div className="font-mono">Navbar goes here</div>
-      <button onClick={onClick} className="btn btn-primary font-mono">
-        About
-      </button>
+    <div className="flex flex-wrap items-center justify-between gap-3 p-4">
+      <Link href="/" className="font-mono">
+        Club C.O.D.E.
+      </Link>
+      <div className="flex flex-wrap justify-end gap-2">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="btn btn-sm sm:btn-md btn-outline border-white/40 text-white hover:bg-white hover:text-black font-mono"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
