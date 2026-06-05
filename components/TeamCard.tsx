@@ -3,17 +3,14 @@ import type { Team } from "../lib/data";
 
 export default function TeamCard({ team }: { team: Team }) {
   return (
-    <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:bg-zinc-900 dark:border-zinc-800">
-      <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">{team.name}</h3>
-      
-      <div className="mt-3 text-sm text-zinc-700 dark:text-zinc-300">
-        <strong>Members:</strong>
-        <ul className="mt-1 ml-4 list-disc">
-          {team.members.map((m) => (
-            <li key={m}>{m}</li>
-          ))}
-        </ul>
+    <div className="rounded-3xl bg-base-200/10 backdrop-blur-md border border-white/20 p-7 shadow-lg transition duration-200 hover:scale-[1.03]">
+      <div className="flex items-center justify-between gap-4">
+        <h2 className="text-[22px] font-bold font-mono">{team.name}</h2>
+        <p className="text-right font-mono opacity-70 shrink-0">
+          {team.leads.join(", ")}
+        </p>
       </div>
+      <p className="text-sm mt-4 font-mono">{team.members.join(", ")}</p>
     </div>
   );
 }

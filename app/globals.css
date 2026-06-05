@@ -3,3 +3,36 @@
    themes: night --default;
  }
 
+/* One full 3D coin-flip; triggered on click or an occasional timer. */
+@keyframes coin-flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-coin-flip {
+  transform-style: preserve-3d;
+  animation: coin-flip 0.9s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-coin-flip {
+    animation: none;
+  }
+}
+
+/* Blinking caret for the typewriter tagline. */
+@keyframes caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
