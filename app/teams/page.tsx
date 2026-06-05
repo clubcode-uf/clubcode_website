@@ -1,6 +1,6 @@
 import { teams, execs } from "../../lib/data";
 import TeamCard from "../../components/TeamCard";
-import ExecCard from "../../components/ExecCard";
+import ExecCarousel from "../../components/ExecCarousel";
 import Navbar from "../../components/Navbar";
 import DottedSurface from "../../components/DottedSurface/DottedSurface";
 
@@ -20,27 +20,20 @@ export default function TeamsPage() {
           <h1 className="text-center text-5xl font-bold text-zinc-50">
             Executive Board
           </h1>
-          <p className="text-center text-xl text-zinc-300 mb-3">
+          <p className="text-center text-xl text-zinc-300 mb-8">
             2026-2027
           </p>
 
-          <div className="grid grid-cols-4 gap-6">
-            {execs.map((exec) => (
-              <ExecCard key={exec.name} exec={exec} />
+          <ExecCarousel execs={execs} />
+
+          <section className="mt-16 space-y-6">
+            <h2 className="text-4xl font-bold font-mono text-center">
+              Teams
+            </h2>
+
+            {teams.map((t) => (
+              <TeamCard key={t.id} team={t} />
             ))}
-          </div>
-
-          <section className="mt-12">
-            <h2 className="text-2xl font-semibold text-zinc-50">Teams</h2>
-            <p className="mt-1 text-sm text-zinc-300">
-              Explore the groups within the club.
-            </p>
-
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {teams.map((t) => (
-                <TeamCard key={t.id} team={t} />
-              ))}
-            </div>
           </section>
         </div>
       </div>

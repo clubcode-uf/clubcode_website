@@ -1,7 +1,9 @@
 import type { SVGProps } from "react";
-import Image from "next/image";
 import Navbar from "../components/Navbar";
 import DottedSurface from "../components/DottedSurface/DottedSurface";
+import CodeCarousel from "../components/CodeCarousel";
+import Typewriter from "../components/Typewriter";
+import HomeIntro from "../components/HomeIntro";
 
 const DiscordIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -64,53 +66,28 @@ const page = () => {
         <DottedSurface />
       </div>
       <Navbar />
-      <main className="min-h-[calc(100vh-72px)] px-6 py-10 font-mono text-zinc-100 sm:px-8 lg:px-12">
-        <section className="mx-auto flex min-h-[calc(100vh-152px)] w-full max-w-6xl flex-col justify-between gap-12">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <main className="min-h-[calc(100vh-72px)] px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(2.5rem,6vh,5rem)] font-mono text-zinc-100">
+        <section className="mx-auto flex min-h-[calc(100vh-152px)] w-full max-w-6xl flex-col justify-between gap-[clamp(3.5rem,9vh,6rem)]">
+          <div className="grid items-center gap-[clamp(3rem,7vw,6rem)] lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <h1 className="text-4xl font-bold tracking-normal text-zinc-100 sm:text-5xl">
+              <h1 className="text-[clamp(2rem,5vw,3.25rem)] font-bold leading-tight tracking-normal text-zinc-100">
                 Club C.O.D.E.
               </h1>
-              <p className="mt-4 text-lg text-zinc-400 sm:text-xl">
-                Collaborate. Organize. Divide. Execute.
-              </p>
+              <Typewriter
+                text="Collaborate. Organize. Divide. Execute."
+                loopDelay={4000}
+                className="mt-[clamp(1rem,2vw,1.75rem)] block text-[clamp(1rem,2vw,1.375rem)] text-[#3ab5fb]"
+              />
 
-              <div className="mt-12 space-y-8">
-                {codeValues.map((item) => (
-                  <div key={item.letter} className="grid grid-cols-[2.25rem_1fr] gap-4">
-                    <span className="text-3xl font-bold leading-none text-[#3ab5fb]">
-                      {item.letter}
-                    </span>
-                    <div>
-                      <h2 className="text-lg font-bold text-zinc-100">{item.title}</h2>
-                      <p className="mt-1 max-w-xl text-base leading-7 text-zinc-400">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              <div className="mt-[clamp(3rem,7vh,5rem)]">
+                <CodeCarousel values={codeValues} />
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-10 text-center">
-              <Image
-                src="/images/ClubCodeLogo.png"
-                alt="Club C.O.D.E. logo"
-                width={500}
-                height={500}
-                priority
-                className="size-56 rounded-full object-contain shadow-[0_0_0_6px_rgba(255,255,255,0.95),0_18px_60px_rgba(58,181,251,0.18)] sm:size-64"
-              />
-
-              <p className="max-w-md text-base leading-7 text-zinc-400 sm:text-lg">
-                Club C.O.D.E. is a student-run organization dedicated to fostering a
-                community of developers, designers, and tech enthusiasts. We build
-                projects, host events, and help each other grow.
-              </p>
-            </div>
+            <HomeIntro />
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-[clamp(1rem,2.5vw,2rem)]">
             {socialLinks.map(({ label, href, icon: Icon }) => (
               <a
                 key={label}
