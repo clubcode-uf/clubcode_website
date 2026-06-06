@@ -8,6 +8,10 @@ const story = [
   "Through hands-on workshops, team projects, and community events, we aim to bridge the gap between classroom learning and real-world experience.",
 ];
 
+export const metadata = {
+  title: "About",
+};
+
 const Page = () => {
   return (
     <>

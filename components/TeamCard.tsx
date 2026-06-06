@@ -1,5 +1,5 @@
 import React from "react";
-import type { Team } from "../lib/data";
+import type { Team } from "../sanity/lib/queries";
 
 export default function TeamCard({ team }: { team: Team }) {
   return (
@@ -10,7 +10,7 @@ export default function TeamCard({ team }: { team: Team }) {
           {team.leads.join(", ")}
         </p>
       </div>
-      <p className="text-sm mt-4 font-mono">{team.members.join(", ")}</p>
+      <p className="text-sm mt-4 font-mono">{(team.members ?? []).join(", ")}</p>
     </div>
   );
 }
