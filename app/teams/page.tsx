@@ -1,14 +1,16 @@
-import { teams, execs } from "../../lib/data";
+import { getTeams, getExecs } from "../../sanity/lib/queries";
 import TeamCard from "../../components/TeamCard";
 import ExecCarousel from "../../components/ExecCarousel";
 import Navbar from "../../components/Navbar";
 import DottedSurface from "../../components/DottedSurface/DottedSurface";
 
 export const metadata = {
-  title: "Teams — Club CODE",
+  title: "Teams",
 };
 
-export default function TeamsPage() {
+export default async function TeamsPage() {
+  const [teams, execs] = await Promise.all([getTeams(), getExecs()]);
+
   return (
     <>
       <div className="fixed inset-0 -z-10">
@@ -32,7 +34,7 @@ export default function TeamsPage() {
             </h2>
 
             {teams.map((t) => (
-              <TeamCard key={t.id} team={t} />
+              <TeamCard key={t._id} team={t} />
             ))}
           </section>
         </div>

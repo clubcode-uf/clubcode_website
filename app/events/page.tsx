@@ -2,6 +2,10 @@ import { getEvents } from "../../sanity/lib/queries";
 import Navbar from "../../components/Navbar";
 import DottedSurface from "../../components/DottedSurface/DottedSurface";
 
+export const metadata = {
+  title: "Events",
+};
+
 export default async function EventsPage() {
   const events = await getEvents();
 
