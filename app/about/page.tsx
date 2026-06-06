@@ -18,7 +18,7 @@ const Page = () => {
       <div className="min-h-screen px-6 py-16">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-5xl font-bold font-mono mb-6 text-white">Our Story</h1>
-          <Terminal lines={story} title="our-story.txt — bash" />
+          <Terminal lines={story} title="our-story.txt — bash" speed={6} />
         </div>
       </div>
     </>

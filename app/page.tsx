@@ -103,6 +103,9 @@ const page = () => {
           </div>
         </section>
       </main>
+      <footer className="px-[clamp(1.5rem,5vw,4.5rem)] pb-8 text-center font-mono text-sm font-semibold text-zinc-300">
+        Made with 💙 by Club C.O.D.E. Web Dev Team © 2026.
+      </footer>
     </>
   );
 };
