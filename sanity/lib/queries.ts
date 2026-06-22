@@ -2,6 +2,14 @@ import { defineQuery } from "next-sanity";
 import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "./client";
 
+export type Event = {
+  _id: string;
+  title: string;
+  summary?: string;
+  startDateTime?: string;
+  location?: string;
+};
+
 export type Exec = {
   _id: string;
   name: string;
@@ -19,17 +27,16 @@ export type Team = {
 };
 
 export const eventsQuery = defineQuery(`
-  *[_type == "event"] | order(startDateTime asc) {
+  *[_type == "event" && defined(startDateTime) && startDateTime >= now()] | order(startDateTime asc) {
     _id,
     title,
-    "slug": slug.current,
     summary,
     startDateTime,
     location
   }
 `);
 
-export async function getEvents() {
+export async function getEvents(): Promise<Event[]> {
   return client.fetch(eventsQuery);
 }
 

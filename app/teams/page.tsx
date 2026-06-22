@@ -17,7 +17,7 @@ export default async function TeamsPage() {
         <DottedSurface />
       </div>
       <Navbar />
-      <div className="flex flex-col items-center min-h-full py-12 font-mono">
+      <main className="flex flex-col items-center min-h-full py-12 font-mono">
         <div className="w-full max-w-5xl px-6">
           <h1 className="text-center text-5xl font-bold text-zinc-50">
             Executive Board
@@ -38,7 +38,7 @@ export default async function TeamsPage() {
             ))}
           </section>
         </div>
-      </div>
+      </main>
     </>
   );
 }

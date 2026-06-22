@@ -31,12 +31,18 @@ export default function Terminal({
   const total = lines.length;
 
   // Which line is currently typing, and how many chars of it are shown.
-  // Initialised "complete" when the user prefers reduced motion.
-  const [line, setLine] = useState(() => (prefersReducedMotion() ? total : 0));
+  const [line, setLine] = useState(0);
   const [char, setChar] = useState(0);
   const timeoutRef = useRef<number | null>(null);
 
   const done = line >= total;
+
+  // Skip straight to the end when the user prefers reduced motion. Applied
+  // after mount (not in the initializer) so the server and first client
+  // render agree on an empty terminal, avoiding a hydration mismatch.
+  useEffect(() => {
+    if (prefersReducedMotion()) setLine(total);
+  }, [total]);
 
   // Notify the parent exactly once when all lines have been typed.
   const notifiedRef = useRef(false);
@@ -100,7 +106,7 @@ export default function Terminal({
               {(isActive || isLast) && (
                 <span
                   aria-hidden="true"
-                  className="ml-0.5 inline-block w-px animate-[caret-blink_1s_steps(1)_infinite] self-stretch border-r-[0.6em] border-zinc-200 align-middle"
+                  className="ml-0.5 inline-block w-px animate-[caret-blink_1s_steps(1)_infinite] motion-reduce:animate-none self-stretch border-r-[0.6em] border-zinc-200 align-middle"
                   style={{ height: "1.1em" }}
                 />
               )}
