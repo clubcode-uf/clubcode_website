@@ -22,11 +22,15 @@ export default function Typewriter({
   loopDelay = 0,
   className,
 }: TypewriterProps) {
-  // When reduced motion is requested, start fully typed and never animate.
-  const [count, setCount] = useState(() =>
-    prefersReducedMotion() ? text.length : 0
-  );
+  const [count, setCount] = useState(0);
   const timeoutRef = useRef<number | null>(null);
+
+  // When reduced motion is requested, jump to the fully-typed text. Applied
+  // after mount (not in the initializer) so the server and first client
+  // render agree on an empty string, avoiding a hydration mismatch.
+  useEffect(() => {
+    if (prefersReducedMotion()) setCount(text.length);
+  }, [text]);
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
@@ -47,7 +51,7 @@ export default function Typewriter({
       <span aria-hidden="true">{text.slice(0, count)}</span>
       <span
         aria-hidden="true"
-        className="ml-0.5 inline-block w-px animate-[caret-blink_1s_steps(1)_infinite] self-stretch border-r-2 border-current align-middle"
+        className="ml-0.5 inline-block w-px animate-[caret-blink_1s_steps(1)_infinite] motion-reduce:animate-none self-stretch border-r-2 border-current align-middle"
         style={{ height: "1em" }}
       />
     </span>

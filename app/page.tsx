@@ -59,7 +59,7 @@ const socialLinks = [
   },
 ];
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <div className="fixed inset-0 -z-10">
@@ -110,4 +110,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

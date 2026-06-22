@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Exec } from "../sanity/lib/queries";
 import { urlFor } from "../sanity/lib/image";
 import Coverflow, { type CoverflowItem } from "./Coverflow";
@@ -10,11 +11,13 @@ export default function ExecCarousel({ execs }: { execs: Exec[] }) {
     label: `${exec.name}, ${exec.role}`,
     content: (
       <>
-        <h4 className="mb-4 text-xl tracking-wide text-zinc-100">{exec.role}</h4>
+        <h2 className="mb-4 text-xl tracking-wide text-zinc-100">{exec.role}</h2>
         {exec.image ? (
-          <img
+          <Image
             src={urlFor(exec.image).width(360).height(360).fit("crop").url()}
             alt={exec.name}
+            width={180}
+            height={180}
             draggable={false}
             className="mx-auto h-[180px] w-[180px] rounded-xl object-cover"
           />

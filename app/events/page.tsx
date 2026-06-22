@@ -1,23 +1,27 @@
 import { getEvents } from "../../sanity/lib/queries";
 import Navbar from "../../components/Navbar";
 import DottedSurface from "../../components/DottedSurface/DottedSurface";
+import InfoCard from "../../components/InfoCard";
 
 export const metadata = {
   title: "Events",
 };
 
+function formatEventDate(dateString?: string) {
+  if (!dateString) return null;
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
 export default async function EventsPage() {
   const events = await getEvents();
-
-  function formatEventDate(dateString: string) {
-    return new Date(dateString).toLocaleString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "2-digit",
-    });
-  }
 
   return (
     <>
@@ -31,20 +35,22 @@ export default async function EventsPage() {
             Upcoming Events
           </h1>
 
-          {events.map((event: any) => (
-            <div
-              key={event._id}
-              className="rounded-3xl bg-base-200/10 backdrop-blur-md border border-white/20 p-7 shadow-lg transition duration-200 hover:scale-[1.03]"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <h2 className="text-[22px] font-bold font-mono">{event.title}</h2>
-                <p className="text-right font-mono opacity-70 shrink-0">
-                  {event.location} | {formatEventDate(event.startDateTime)}
-                </p>
-              </div>
-              <p className="text-sm mt-4 font-mono">{event.summary}</p>
-            </div>
-          ))}
+          {events.length === 0 ? (
+            <p className="text-center font-mono opacity-70">
+              No upcoming events right now — check back soon.
+            </p>
+          ) : (
+            events.map((event) => (
+              <InfoCard
+                key={event._id}
+                title={event.title}
+                meta={[event.location, formatEventDate(event.startDateTime)]
+                  .filter(Boolean)
+                  .join(" | ")}
+                body={event.summary}
+              />
+            ))
+          )}
         </div>
       </main>
     </>

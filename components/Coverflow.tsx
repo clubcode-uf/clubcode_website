@@ -186,7 +186,7 @@ export default function Coverflow({
               key={item.key}
               type="button"
               aria-label={item.label}
-              aria-hidden={!isCenter}
+              aria-hidden={!visible}
               tabIndex={isCenter ? 0 : -1}
               onClick={() => !isCenter && goTo(i)}
               className={cn(
@@ -252,6 +252,11 @@ export default function Coverflow({
             )}
           />
         ))}
+      </div>
+
+      {/* Announce slide changes to screen readers. */}
+      <div aria-live="polite" className="sr-only">
+        {items[active]?.label}
       </div>
     </div>
   );

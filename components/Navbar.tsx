@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="p-4">
+    <nav aria-label="Primary" className="p-4">
       <div className="flex items-center justify-between gap-3">
         <Link href="/" className="font-mono">
           Club C.O.D.E.
@@ -95,7 +95,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

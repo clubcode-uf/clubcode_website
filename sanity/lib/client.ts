@@ -6,6 +6,5 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  //set to true when put in production
   useCdn: false, // Set to false if statically generating pages, using ISR or tag-based revalidation
 })
