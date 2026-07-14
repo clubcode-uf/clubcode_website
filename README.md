@@ -4,6 +4,9 @@ The official website for Club C.O.D.E. at the University of Florida.
 
 Built with [Next.js](https://nextjs.org) and [Sanity](https://www.sanity.io) (our content manager).
 
+> 📚 **New maintainer?** Start with the guides in [`docs/`](docs/README.md) - how to edit
+> content in Sanity Studio, and a full handover for the next web dev lead.
+
 ## Run the site locally
 
 You'll need [Node.js](https://nodejs.org) installed.
